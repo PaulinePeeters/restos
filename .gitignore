@@ -1,0 +1,38 @@
+# =========================
+# RestOS - Fichiers Ignorés
+# =========================
+
+# Secrets et Configurations Locales 
+.env
+.env.*.local
+.env.local
+
+# Dépendances Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Fichiers de Compilation
+dist/
+build/
+frontend/dist/
+backend/dist/
+
+# Fichiers de Base de Données 
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Uploads et images locales 
+backend/public/uploads/
+!backend/public/uploads/.gitkeep
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers de cache / IDE
+.vscode/
+.idea/
+*.swp

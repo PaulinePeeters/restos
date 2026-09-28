@@ -1,0 +1,182 @@
+.card {
+    background-color: var(--color-bg-surface);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-bg-subtle);
+    margin-bottom: 2rem;
+
+    & h2 {
+        margin-bottom: 1.5rem;
+        color: var(--color-primary);
+        font-size: 1.5rem;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 500px;
+    margin: 0 auto;
+
+    & input {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: var(--radius-md);
+        background-color: var(--color-bg-main);
+        transition: all var(--transition-fast);
+
+        &:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.2);
+        }
+    }
+
+    & label {
+        font-weight: 600;
+        color: var(--color-text-secondary);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+.dateInput {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.btnPrimary {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    align-self: flex-start;
+
+    &:hover {
+        background-color: var(--color-primary-dark);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-md);
+    }
+}
+
+.btnDelete {
+    background-color: var(--color-danger);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+
+    &:hover {
+        background-color: #c0392b;
+    }
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1rem;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+
+    & th {
+        background-color: var(--color-secondary);
+        color: white;
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+    }
+
+    & td {
+        padding: 1rem;
+        border-bottom: 1px solid var(--color-bg-subtle);
+        color: var(--color-text-main);
+    }
+
+    & tr:last-child td {
+        border-bottom: none;
+    }
+
+    & tr:hover {
+        background-color: #f9fafb;
+    }
+}
+
+.tableWrapper {
+    overflow-x: auto;
+}
+
+.code {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.soldePositif {
+    color: var(--color-success);
+    font-weight: 600;
+}
+
+.soldeZero {
+    color: var(--color-danger);
+    font-weight: 600;
+}
+
+.emailLabel {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.emailInput {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.btnNotify {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #3b82f6;
+    margin-right: 10px;
+    transition: color var(--transition-fast);
+}
+
+.btnNotify:hover {
+    color: #2563eb;
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .btnPrimary {
+        width: 100%;
+        align-self: stretch;
+    }
+
+    .table {
+        min-width: 700px;
+    }
+}

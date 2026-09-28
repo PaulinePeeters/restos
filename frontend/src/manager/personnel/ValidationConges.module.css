@@ -1,0 +1,61 @@
+.container {
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.column {
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.card {
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+}
+
+.motif {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.buttonApprove {
+    background: #22c55e;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buttonReject {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.overtime {
+    color: #ef4444;
+}

@@ -1,0 +1,452 @@
+.container {
+    max-width: 650px;
+    margin: 4rem auto;
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    background: white;
+    font-family: var(--font-family-base);
+    box-shadow: var(--shadow-lg);
+    color: var(--color-text-main);
+    border: 1px solid var(--color-bg-subtle);
+}
+
+.container h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--color-secondary-dark);
+    letter-spacing: -0.02em;
+}
+
+.container h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 2rem 0 1.2rem;
+    color: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.summarySection {
+    background: var(--color-bg-main);
+    padding: 1.8rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 2.5rem;
+    border: 1px dashed var(--color-secondary-light);
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.summaryRow strong {
+    color: var(--color-secondary-dark);
+    font-weight: 700;
+}
+
+.summaryRow.total {
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--color-bg-subtle);
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--color-secondary-dark);
+}
+
+.totalAmount {
+    color: var(--color-primary);
+}
+
+.chequeSection {
+    margin: 2rem 0;
+    padding: 1.8rem;
+    background: white;
+    border: 1px solid var(--color-bg-subtle);
+    border-radius: var(--radius-md);
+    transition: var(--transition-normal);
+}
+
+.chequeSection:focus-within {
+    border-color: var(--color-primary-light);
+    box-shadow: 0 0 0 4px rgba(231, 111, 81, 0.05);
+}
+
+.inputGroup {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.input {
+    flex: 1;
+    padding: 14px 18px;
+    border: 1px solid var(--color-bg-subtle);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: var(--transition-fast);
+    outline: none;
+    background: var(--color-bg-main);
+}
+
+.input:focus {
+    border-color: var(--color-primary);
+    background: white;
+}
+
+.btnApply {
+    padding: 0 24px;
+    background: var(--color-secondary-dark);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.btnApply:hover {
+    background: var(--color-primary);
+    transform: translateY(-1px);
+}
+
+.optionsPaiement {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+.option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 1.2rem;
+    border: 1px solid var(--color-bg-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition-normal);
+    background: white;
+}
+
+.option:hover {
+    border-color: var(--color-primary-light);
+    background: var(--color-bg-main);
+}
+
+.option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.option:has(input:checked) {
+    border-color: var(--color-primary);
+    background: rgba(231, 111, 81, 0.03);
+    box-shadow: var(--shadow-sm);
+}
+
+.option:has(input:checked) .optionContent {
+    color: var(--color-primary-dark);
+}
+
+.option:has(input:checked) .icon {
+    color: var(--color-primary);
+}
+
+.optionContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    width: 100%;
+    text-align: center;
+}
+
+.icon {
+    font-size: 1.8rem;
+    color: var(--color-bg-subtle);
+    transition: var(--transition-fast);
+}
+
+.splitSection {
+    margin: 2.5rem 0;
+    padding: 1.8rem;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-bg-subtle);
+    border-radius: var(--radius-md);
+}
+
+.splitHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.splitTitle {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-secondary-dark);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.toggleSwitch {
+    position: relative;
+    width: 54px;
+    height: 30px;
+}
+
+.toggleSwitch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--color-bg-subtle);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: var(--shadow-sm);
+}
+
+.toggleSwitch input:checked + .slider {
+    background-color: var(--color-primary);
+}
+
+.toggleSwitch input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+.splitDetails {
+    margin-top: 1.8rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--color-bg-subtle);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.personCount {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+}
+
+.counterControl {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--color-bg-main);
+    padding: 6px;
+    border-radius: var(--radius-sm);
+}
+
+.btnCounter {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--color-bg-subtle);
+    background: white;
+    color: var(--color-secondary-dark);
+    font-size: 1.3rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+
+.btnCounter:hover {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.countDisplay {
+    font-weight: 800;
+    font-size: 1.2rem;
+    min-width: 24px;
+    text-align: center;
+}
+
+.amountPerPerson {
+    background: rgba(231, 111, 81, 0.05);
+    padding: 1.2rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    color: var(--color-primary-dark);
+    font-weight: 700;
+    border: 1px solid rgba(231, 111, 81, 0.1);
+}
+
+.amountHighlight {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--color-primary);
+    margin-top: 0.3rem;
+}
+
+.btnPayer {
+    display: block;
+    width: 100%;
+    margin-top: 3rem;
+    padding: 1.4rem;
+    background: var(--color-primary);
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(231, 111, 81, 0.3);
+    transition: var(--transition-normal);
+}
+
+.btnPayer:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(231, 111, 81, 0.4);
+    filter: brightness(1.1);
+}
+
+.btnPayer:active {
+    transform: translateY(1px);
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+}
+
+.discountRow {
+    color: #10b981;
+    font-weight: 700;
+}
+
+.tipRow {
+    color: #f59e0b;
+    font-weight: 700;
+}
+
+.totalPayRow {
+    font-size: 1.6rem;
+    margin-top: 1.5rem;
+    border-top: 2px solid var(--color-primary-light);
+    padding-top: 1.5rem;
+}
+
+.tipMessage {
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.tipMessageSuccess { color: #10b981; }
+.tipMessageError { color: var(--color-danger); }
+
+.tipButtons {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.tipBtn {
+    flex: 1;
+    min-width: 60px;
+}
+
+.tipBtnSelected {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.tipBtnNoneSelected {
+    background-color: var(--color-bg-subtle);
+    color: var(--color-text-secondary);
+}
+
+.tipBtnUnselected {
+    background-color: var(--color-bg-main);
+    color: var(--color-secondary);
+}
+
+.invoiceToggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.invoiceCheckbox {
+    width: 22px;
+    height: 22px;
+    accent-color: var(--color-primary);
+}
+
+.invoiceLabel {
+    font-weight: 700;
+    color: var(--color-secondary);
+}
+
+.invoiceForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.2rem;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 2rem 1rem;
+        padding: 1.8rem;
+    }
+    
+    .optionsPaiement {
+        grid-template-columns: 1fr 1fr;
+    }
+}

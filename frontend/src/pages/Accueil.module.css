@@ -1,0 +1,57 @@
+.accueil-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.logo-section {
+    margin-bottom: 2rem;
+}
+
+.logo-accueil {
+    width: 350px;
+    max-width: 100%;
+    height: auto;
+}
+
+.vision-section {
+    margin-bottom: 2rem;
+
+    & h2 {
+        font-family: 'Georgia', serif;
+        font-size: 1.5rem;
+        color: #1f1f1f;
+    }
+
+    & p {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.6;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+}
+
+.galerie-section {
+    & h3 {
+        font-family: 'Georgia', serif;
+        font-size: 1.5rem;
+        color: #1f1f1f;
+        margin-bottom: 1rem;
+    }
+}
+
+.galerie {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    & img {
+        width: 300px;
+        max-width: 90%;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+}

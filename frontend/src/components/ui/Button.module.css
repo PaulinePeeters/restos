@@ -1,0 +1,74 @@
+.button {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+/* Variants */
+/* couleurs primaires - orange */
+.primary {
+    background-color: #f4a261;
+    color: white;
+
+    &:hover:not(:disabled) {
+        background-color: #e76f51;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px rgba(231, 111, 81, 0.2);
+    }
+}
+/* couleurs secondaires - bleu sarcelle */
+.secondary {
+    background-color: #2a9d8f;
+    color: white;
+
+    &:hover:not(:disabled) {
+        background-color: #21867a;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px rgba(42, 157, 143, 0.2);
+    }
+}
+/* couleurs danger - rouge */
+.danger {
+    background-color: #ef4444;
+    color: white;
+
+    &:hover:not(:disabled) {
+        background-color: #dc2626;
+        box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
+    }
+}
+/* couleurs neutres - gris */
+.outline {
+    background-color: transparent;
+    border: 2px solid #ccc;
+    color: #555;
+
+    &:hover:not(:disabled) {
+        border-color: #888;
+        color: #333;
+    }
+}
+
+.text {
+    background-color: transparent;
+    color: #555;
+    padding: 0.4rem 0.8rem;
+
+    &:hover:not(:disabled) {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: #333;
+    }
+}

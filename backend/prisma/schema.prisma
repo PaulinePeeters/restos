@@ -1,0 +1,497 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "windows", "darwin", "darwin-arm64"]
+}
+
+generator frontend {
+  provider = "prisma-generator-typescript-interfaces"
+  output   = "../../frontend/src/types/prisma-types.ts"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model tabsencepersonnel {
+  id                   Int           @id @default(autoincrement())
+  personnel_id         Int
+  date_debut           DateTime      @db.Date
+  date_fin             DateTime      @db.Date
+  motif_absence        String?       @db.VarChar(100)
+  justificatif_url     String?       @db.VarChar(255)
+  statut               StatutAbsence @default(EN_ATTENTE)
+  transmis_sec_sociale Boolean       @default(false)
+  type_conge_id        Int?
+  tpersonnel           tpersonnel    @relation(fields: [personnel_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  ttypeconge           ttypeconge?   @relation(fields: [type_conge_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model tadresselivraison {
+  id             Int      @id @default(autoincrement())
+  rue_adresse    String   @db.VarChar(50)
+  numero_adresse String   @db.VarChar(10)
+  cp_adresse     String   @db.VarChar(10)
+  ville_adresse  String   @db.VarChar(50)
+  est_par_defaut Boolean?
+  client_id      Int
+  tclient        tclient  @relation(fields: [client_id], references: [id_client], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model tallergene {
+  id              Int               @id @default(autoincrement())
+  nom             String            @unique @db.VarChar(50)
+  icon            String?           @db.VarChar(50)
+  tplat_allergene tplat_allergene[]
+}
+
+model tcategorieplat {
+  id            Int              @id @default(autoincrement())
+  nom_categorie String           @db.VarChar(50)
+  actif         Boolean          @default(true)
+  parent_id     Int?
+  parent        tcategorieplat?  @relation("CategorieParent", fields: [parent_id], references: [id])
+  children      tcategorieplat[] @relation("CategorieParent")
+  tplat         tplat[]
+}
+
+model tclient {
+  id_client                Int                        @id @default(autoincrement())
+  nom_client               String                     @db.VarChar(50)
+  email_client             String                     @unique @db.VarChar(50)
+  tel_client               String?                    @db.VarChar(20)
+  date_creation_client     DateTime                   @db.Date
+  mdp_client               String                     @db.VarChar(100)
+  points_fidelite          Int                        @default(0)
+  est_vip                  Boolean                    @default(false)
+  actif                    Boolean                    @default(true)
+  entreprise               String?                    @db.VarChar(100)
+  tva                      String?                    @db.VarChar(50)
+  tadresselivraison        tadresselivraison[]
+  tchequecadeau            tchequecadeau[]
+  tclient_preference_table tclient_preference_table[]
+  tclient_recompense       tclient_recompense[]
+  tcommande                tcommande[]
+  treservation             treservation[]
+}
+
+model tclient_preference_table {
+  id                  Int         @id @default(autoincrement())
+  client_id           Int
+  table_id            Int
+  nombre_reservations Int         @default(1)
+  tclient             tclient     @relation(fields: [client_id], references: [id_client], onDelete: Cascade)
+  ttableresto         ttableresto @relation(fields: [table_id], references: [id], onDelete: Cascade)
+
+  @@unique([client_id, table_id])
+}
+
+model trecompense {
+  id                 Int                  @id @default(autoincrement())
+  nom                String               @db.VarChar(100)
+  cout_points        Int
+  type               TypeRecompense
+  valeur             Decimal              @db.Decimal(10, 2)
+  tclient_recompense tclient_recompense[]
+}
+
+model tclient_recompense {
+  id               Int         @id @default(autoincrement())
+  client_id        Int
+  recompense_id    Int
+  date_obtention   DateTime    @default(now())
+  date_utilisation DateTime?
+  tclient          tclient     @relation(fields: [client_id], references: [id_client], onDelete: Cascade)
+  trecompense      trecompense @relation(fields: [recompense_id], references: [id], onDelete: Cascade)
+}
+
+model tevenement {
+  id                    Int               @id @default(autoincrement())
+  titre                 String            @db.VarChar(100)
+  description           String?
+  image_url             String?           @db.VarChar(255)
+  date_debut            DateTime
+  date_fin              DateTime
+  actif                 Boolean           @default(true)
+  type                  TypeEvenement     @default(EVENEMENT)
+  couleur_principale    String?           @db.VarChar(20)
+  couleur_secondaire    String?           @db.VarChar(20)
+  couleur_texte         String?           @db.VarChar(20)
+  motif                 String?           @db.VarChar(50)
+  font                  String?           @db.VarChar(50)
+  format                String            @default("CARTE") @db.VarChar(20)
+  text_align            String            @default("center") @db.VarChar(10)
+  button_style          String            @default("filled") @db.VarChar(20)
+  opacity               Decimal           @default(0.0) @db.Decimal(3, 2)
+  pourcentage_reduction Decimal?          @db.Decimal(5, 2)
+  tevenement_plat       tevenement_plat[]
+}
+
+model tevenement_plat {
+  id           Int        @id @default(autoincrement())
+  evenement_id Int
+  plat_id      Int
+  tevenement   tevenement @relation(fields: [evenement_id], references: [id], onDelete: Cascade)
+  tplat        tplat      @relation(fields: [plat_id], references: [id], onDelete: Cascade)
+}
+
+model tcommande {
+  id                       Int              @id @default(autoincrement())
+  date_heure_commande      DateTime         @db.Timestamp(6)
+  commentaire_global       String?
+  total_estime_commande    Decimal          @db.Decimal(10, 2)
+  session_table_id         Int?
+  client_id                Int?
+  type_commande            TypeCommande
+  statut_commande          StatutCommande
+  email_recu               String?          @db.VarChar(100)
+  justification_annulation String?          @db.VarChar(255)
+  type_reduction           TypeReduction?
+  date_heure_souhaitee     DateTime?        @db.Timestamp(6)
+  adresse_livraison        String?          @db.VarChar(255)
+  tel_livraison            String?          @db.VarChar(20)
+  updated_at               DateTime         @default(now()) @updatedAt
+  tavis                    tavis?
+  tclient                  tclient?         @relation(fields: [client_id], references: [id_client], onDelete: NoAction, onUpdate: NoAction)
+  tsessiontable            tsessiontable?   @relation(fields: [session_table_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  tlignecommande           tlignecommande[]
+  tpaiement                tpaiement[]
+}
+
+model thoraire {
+  id           Int        @id @default(autoincrement())
+  personnel_id Int
+  jour_horaire String     @db.VarChar(20)
+  heure_debut  DateTime   @db.Time(6)
+  heure_fin    DateTime   @db.Time(6)
+  tpersonnel   tpersonnel @relation(fields: [personnel_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model tingredient {
+  id               Int                @id @default(autoincrement())
+  nom_ingredient   String             @db.VarChar(50)
+  unite_ingredient String             @db.VarChar(20)
+  cout_unitaire    Decimal            @default(0) @db.Decimal(10, 2)
+  seuil_alerte     Decimal            @default(10) @db.Decimal(10, 2)
+  stock_actuel     Decimal            @default(0) @db.Decimal(10, 2)
+  tplat_ingredient tplat_ingredient[]
+}
+
+model tlignecommande {
+  id                        Int             @id @default(autoincrement())
+  commande_id               Int
+  plat_id                   Int
+  quantite                  Int
+  commentaire               String?
+  categorie_service         String?         @db.VarChar(50)
+  ordre_service             Int?
+  statut_service            StatutService?
+  cuisson                   Cuisson?
+  justification_annulation  String?         @db.VarChar(255)
+  type_reduction            TypeReduction?
+  date_envoi_cuisine        DateTime?       @db.Timestamp(6)
+  format                    String?         @db.VarChar(50)
+  prix_unitaire             Decimal?        @db.Decimal(10, 2)
+  restrictions_alimentaires String?         @db.VarChar(255)
+  tcommande                 tcommande       @relation(fields: [commande_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  tplat                     tplat           @relation(fields: [plat_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  tnotifcuisine             tnotifcuisine[]
+}
+
+model tnotifcuisine {
+  id                Int            @id @default(autoincrement())
+  ligne_commande_id Int
+  date_heure_envoi  DateTime       @db.Timestamp(6)
+  statut            String         @db.VarChar(50)
+  tlignecommande    tlignecommande @relation(fields: [ligne_commande_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model tpaiement {
+  id               Int              @id @default(autoincrement())
+  commande_id      Int
+  montant_paiement Decimal          @db.Decimal(10, 2)
+  date_paiement    DateTime         @db.Timestamp(6)
+  transaction_id   String?          @db.VarChar(50)
+  methode_paiement MethodePaiement?
+  etat_paiement    EtatPaiement
+  tcommande        tcommande        @relation(fields: [commande_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model tpersonnel {
+  id                 Int                 @id @default(autoincrement())
+  nom_personnel      String              @db.VarChar(50)
+  prenom_personnel   String              @db.VarChar(50)
+  email_personnel    String              @unique @db.VarChar(50)
+  mdp_personnel      String              @db.VarChar(100)
+  actif              Boolean
+  role_personnel     Role
+  solde_conges       Float               @default(20.0)
+  solde_recuperation Float               @default(0.0)
+  tabsencepersonnel  tabsencepersonnel[]
+  thoraire           thoraire[]
+  tpointage          tpointage[]
+}
+
+model tpointage {
+  id              Int            @id @default(autoincrement())
+  personnel_id    Int
+  date            DateTime       @db.Date
+  heure_debut     DateTime       @db.Time(6)
+  heure_fin       DateTime?      @db.Time(6)
+  pause_minutes   Int            @default(0)
+  heures_prestees Float          @default(0.0)
+  heures_supp     Float          @default(0.0)
+  statut          StatutPointage @default(EN_ATTENTE)
+  commentaire     String?        @db.VarChar(255)
+  tpersonnel      tpersonnel     @relation(fields: [personnel_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model ttypeconge {
+  id                    Int                 @id @default(autoincrement())
+  nom                   String              @db.VarChar(50)
+  deduit_solde_conges   Boolean             @default(false)
+  est_recuperation      Boolean             @default(false)
+  requiert_justificatif Boolean             @default(false)
+  tabsencepersonnel     tabsencepersonnel[]
+}
+
+model tplat {
+  id                   Int                @id @default(autoincrement())
+  nom_plat             String             @db.VarChar(200)
+  description_plat     String?
+  prix_plat            Decimal            @db.Decimal(10, 2)
+  disponible           Boolean
+  categorie_id         Int
+  peut_choisir_cuisson Boolean            @default(false)
+  vegan                Boolean            @default(false)
+  vegetarien           Boolean            @default(false)
+  image_url            String?            @db.VarChar(255)
+  description_plat_en  String?
+  nom_plat_en          String?            @db.VarChar(200)
+  description_plat_nl  String?
+  nom_plat_nl          String?            @db.VarChar(200)
+  tevenement_plat      tevenement_plat[]
+  tlignecommande       tlignecommande[]
+  tcategorieplat       tcategorieplat     @relation(fields: [categorie_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  tplat_allergene      tplat_allergene[]
+  tplat_format         tplat_format[]
+  tplat_ingredient     tplat_ingredient[]
+}
+
+model tplat_format {
+  id         Int     @id @default(autoincrement())
+  plat_id    Int
+  nom_format String  @db.VarChar(50)
+  prix       Decimal @db.Decimal(10, 2)
+  tplat      tplat   @relation(fields: [plat_id], references: [id], onDelete: Cascade)
+}
+
+model tplat_allergene {
+  id           Int        @id @default(autoincrement())
+  plat_id      Int
+  allergene_id Int
+  tallergene   tallergene @relation(fields: [allergene_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  tplat        tplat      @relation(fields: [plat_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model tplat_ingredient {
+  id            Int         @id @default(autoincrement())
+  plat_id       Int
+  ingredient_id Int
+  qt_utilisee   Decimal     @db.Decimal(10, 2)
+  tingredient   tingredient @relation(fields: [ingredient_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  tplat         tplat       @relation(fields: [plat_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model treservation {
+  id                      Int               @id @default(autoincrement())
+  date_reservation        DateTime          @db.Date
+  heure_reservation       DateTime          @db.Time(6)
+  nb_personnes            Int
+  commentaire_reservation String?
+  client_id               Int?
+  table_id                Int
+  email_client            String?           @db.VarChar
+  nom_client              String?           @db.VarChar
+  telephone_client        String?           @db.VarChar
+  statut_reservation      StatutReservation
+  empreinte_bancaire      String?           @db.VarChar(100)
+  tclient                 tclient?          @relation(fields: [client_id], references: [id_client], onDelete: NoAction, onUpdate: NoAction)
+  ttableresto             ttableresto       @relation(fields: [table_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model tsessiontable {
+  id               Int           @id @default(autoincrement())
+  date_heure_debut DateTime      @db.Timestamp(6)
+  date_heure_fin   DateTime?     @db.Timestamp(6)
+  table_id         Int
+  serveur_id       Int?
+  statut_session   StatutSession
+  nb_couverts      Int           @default(1)
+  tcommande        tcommande[]
+  ttableresto      ttableresto   @relation(fields: [table_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model ttableresto {
+  id                       Int                        @id @default(autoincrement())
+  numero_table             String                     @db.VarChar(10)
+  capacite_table           Int
+  est_fusionnee            Boolean?                   @default(false)
+  tables_fusionnees        String?                    @db.VarChar(50)
+  est_occupee_par_fusion   Boolean?                   @default(false)
+  hauteur                  Int                        @default(1)
+  largeur                  Int                        @default(1)
+  orientation              String?                    @db.VarChar(10)
+  pos_x                    Int                        @default(0)
+  pos_y                    Int                        @default(0)
+  rotation                 Float                      @default(0)
+  salle                    String                     @default("Principale") @db.VarChar(50)
+  type_element             String                     @default("table") @db.VarChar(20)
+  actif                    Boolean                    @default(true)
+  tclient_preference_table tclient_preference_table[]
+  treservation             treservation[]
+  tsessiontable            tsessiontable[]
+}
+
+model tconfiguration {
+  id          Int     @id @default(autoincrement())
+  cle         String  @unique @db.VarChar(50)
+  valeur      String?
+  description String? @db.VarChar(255)
+}
+
+model tchequecadeau {
+  id              Int      @id @default(autoincrement())
+  code            String   @unique @db.VarChar(20)
+  montant_initial Decimal  @db.Decimal(10, 2)
+  solde_actuel    Decimal  @db.Decimal(10, 2)
+  date_creation   DateTime @default(now())
+  date_expiration DateTime
+  est_actif       Boolean  @default(true)
+  client_id       Int?
+  tclient         tclient? @relation(fields: [client_id], references: [id_client])
+}
+
+model tavis {
+  id          Int       @id @default(autoincrement())
+  commande_id Int       @unique
+  note        Int       @default(5)
+  commentaire String?
+  date_avis   DateTime  @default(now())
+  tcommande   tcommande @relation(fields: [commande_id], references: [id], onDelete: Cascade)
+}
+
+model tnotification {
+  id                Int      @id @default(autoincrement())
+  type              String   @db.VarChar(50)
+  message           String
+  data              Json?
+  role_destinataire String   @db.VarChar(20)
+  lu                Boolean  @default(false)
+  date_creation     DateTime @default(now())
+}
+
+enum Cuisson {
+  BLEU
+  SAIGNANT
+  A_POINT
+  BIEN_CUIT
+  ROSE
+}
+
+enum EtatPaiement {
+  EN_ATTENTE
+  PAYE
+  ECHEC
+  ANNULE
+}
+
+enum MethodePaiement {
+  EN_LIGNE
+  SUR_PLACE
+  ESPECES
+  CB
+  CHEQUE_CADEAU
+  TICKET_RESTO
+  BANCONTACT
+  PAYCONIQ
+  PAYPAL
+}
+
+enum Role {
+  manager
+  serveur
+  cuisinier
+  livreur
+  super_admin
+  barman
+}
+
+enum StatutCommande {
+  EN_ATTENTE
+  EN_PREPARATION
+  SERVIE
+  LIVREE
+  ANNULEE
+  TERMINEE
+}
+
+enum StatutReservation {
+  EN_ATTENTE
+  CONFIRMEE
+  ARRIVEE
+  ANNULEE
+  TERMINEE
+  NON_PRESENT
+}
+
+enum StatutService {
+  EN_ATTENTE
+  EN_CUISINE
+  PRET
+  SERVI
+}
+
+enum StatutSession {
+  ACTIVE
+  TERMINEE
+  EN_ATTENTE_PAIEMENT
+  A_DEBARRASSER
+}
+
+enum StatutAbsence {
+  EN_ATTENTE
+  VALIDEE
+  REFUSEE
+  ANNULEE
+}
+
+enum StatutPointage {
+  EN_ATTENTE
+  VALIDEE
+  REFUSEE
+}
+
+enum TypeCommande {
+  SUR_PLACE  @map("SUR PLACE")
+  A_EMPORTER
+  LIVRAISON
+}
+
+enum TypeRecompense {
+  REDUCTION_MONTANT
+  POURCENTAGE
+  PRODUIT_OFFERT
+}
+
+enum TypeReduction {
+  PERSONNEL
+  VIP
+  OFFERT
+  AUCUN
+}
+
+enum TypeEvenement {
+  PROMOTION
+  EVENEMENT
+  MENU_SPECIAL
+}

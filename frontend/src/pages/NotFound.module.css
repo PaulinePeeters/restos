@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.title {
+    font-size: 6rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.message {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary, #666);
+    margin: 0;
+}
+
+.link {
+    margin-top: 1.5rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}

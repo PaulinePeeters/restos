@@ -1,0 +1,71 @@
+.container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    font-family: var(--font-family-base);
+}
+
+.title {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+}
+
+.starsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.star {
+    font-size: 2.5rem;
+    color: #d1d5db;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.starActive {
+    color: #fbbf24;
+}
+
+.textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: var(--radius-md);
+    min-height: 120px;
+    margin-bottom: 2rem;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.btnSubmit {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: var(--color-primary-dark);
+    }
+}
+
+.successMessage {
+    color: var(--color-success);
+    font-size: 1.2rem;
+    font-weight: 600;
+}

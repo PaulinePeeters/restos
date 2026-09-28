@@ -1,0 +1,17 @@
+.heureSouhaitee {
+    margin-top: 5px;
+    color: #d97706;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.packagingInfo {
+    margin-top: 5px;
+    color: #ef4444;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 1px solid #ef4444;
+    padding: 2px 5px;
+    border-radius: 4px;
+    display: inline-block;
+}

@@ -1,0 +1,57 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: restos_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-restosuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-restospassword}
+      POSTGRES_DB: ${POSTGRES_DB:-restos}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "${POSTGRES_HOST_PORT:-5434}:5432"
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: restos_backend
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-restosuser}:${POSTGRES_PASSWORD:-restospassword}@db:5432/${POSTGRES_DB:-restos}?schema=public
+      - JWT_SECRET=${JWT_SECRET:-votre_secret_jwt_super_securise_en_production}
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost,http://51.210.8.227}
+      - SMTP_HOST=${SMTP_HOST:-smtp.gmail.com}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_USER=${SMTP_USER:-declinaisonrestos@gmail.com}
+      - SMTP_PASS=${SMTP_PASS:-}
+      - MAIL_FROM_NAME=${MAIL_FROM_NAME:-Declinaison}
+      - MAIL_FROM_ADDRESS=${MAIL_FROM_ADDRESS:-declinaisonrestos@gmail.com}
+      - CONTACT_RECIPIENT_EMAIL=${CONTACT_RECIPIENT_EMAIL:-declinaisonrestos@gmail.com}
+      - FRONTEND_URL=${FRONTEND_URL:-http://51.210.8.227}
+    volumes:
+      - backend_uploads:/app/public/uploads
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=
+    container_name: restos_frontend
+    ports:
+      - "${FRONTEND_HOST_PORT:-80}:80" 
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  backend_uploads:

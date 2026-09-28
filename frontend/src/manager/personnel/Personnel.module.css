@@ -1,0 +1,67 @@
+.tabs {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--color-bg-subtle);
+    padding-bottom: 1rem;
+}
+
+.tabs :global(button) {
+    min-width: 160px;
+}
+
+.button {
+    margin-right: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-subtle);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    color: var(--color-text-secondary);
+    font-family: var(--font-family-base);
+
+    &:hover {
+        background-color: #e9ecef;
+        color: var(--color-text-main);
+    }
+
+    &.active {
+        background-color: var(--color-primary);
+        color: white;
+        box-shadow: var(--shadow-sm);
+    }
+}
+
+.personnel-content {
+    padding: 2rem;
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-bg-subtle);
+}
+
+@media (max-width: 768px) {
+    .tabs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 1rem;
+    }
+
+    .tabs :global(button) {
+        min-width: 0;
+        width: 100%;
+        padding: 0.55rem 0.6rem;
+        font-size: 0.86rem;
+    }
+
+    .personnel-content {
+        padding: 1rem;
+        border-radius: var(--radius-md);
+    }
+}

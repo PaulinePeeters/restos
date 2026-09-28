@@ -1,0 +1,152 @@
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.searchBar {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: all 0.2s;
+}
+
+.searchBar:focus {
+    outline: 2px solid #8b5cf6;
+    border-color: transparent;
+}
+
+.tableContainer {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table th,
+.table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.table th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover {
+    background-color: #f8fafc;
+}
+
+.vipBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #fef3c7;
+    color: #d97706;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.btnVip {
+    background: none;
+    border: 1px solid #e2e8f0;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    transition: all 0.2s;
+}
+
+.btnVip:hover {
+    border-color: #f59e0b;
+    color: #f59e0b;
+    background-color: #fef3c7;
+}
+
+.btnVipActive {
+    color: #f59e0b;
+    border-color: #f59e0b;
+    background-color: #fef3c7;
+}
+
+.btnVipActive:hover {
+    background-color: #fde68a;
+}
+
+.points {
+    font-weight: 600;
+    color: #8b5cf6;
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.contactInfo span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.clientName {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.emptyState {
+    padding: 40px;
+    text-align: center;
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 8px;
+}
+
+.btnDelete {
+    background: none;
+    border: 1px solid #e2e8f0;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    transition: all 0.2s;
+}
+
+.btnDelete:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+    background-color: #fef2f2;
+}

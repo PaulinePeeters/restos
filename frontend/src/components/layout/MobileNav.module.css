@@ -1,0 +1,88 @@
+.mobileNav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-secondary);
+    height: 74px;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    padding: 0.35rem 0.6rem;
+
+    @media (max-width: 768px) {
+        display: flex;
+    }
+}
+
+.navScroll {
+    flex-grow: 1;
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 3px 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.navScroll::-webkit-scrollbar {
+    display: none;
+}
+
+.link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.68rem;
+    min-width: 78px;
+    padding: 0.2rem 0.1rem;
+    transition: all 0.2s ease;
+    position: relative;
+    text-align: center;
+}
+
+.link.active {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.icon {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.label {
+    line-height: 1.1;
+    max-width: 78px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.badge {
+    position: absolute;
+    top: -1px;
+    right: 2px;
+    background-color: var(--color-danger);
+    color: white;
+    font-size: 0.65rem;
+    padding: 1px 5px;
+    border-radius: var(--radius-full);
+}
+
+.logoutBtn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    cursor: pointer;
+    min-width: 42px;
+}

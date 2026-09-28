@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 1rem;
+    background-color: var(--color-bg-main);
+}
+
+.card {
+    background-color: var(--color-bg-surface);
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+.icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+p {
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.btnHome {
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: var(--color-primary-dark);
+    }
+}

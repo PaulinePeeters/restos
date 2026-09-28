@@ -1,0 +1,143 @@
+.container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: var(--font-family-base);
+    color: var(--color-text-main);
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.tabButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border: 1px solid var(--color-bg-subtle);
+    border-radius: var(--radius-md);
+    padding: 0.6rem 0.8rem;
+    font-weight: 600;
+}
+
+.tabActive {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary-dark);
+}
+
+.tabInactive {
+    background: var(--color-bg-surface);
+    color: var(--color-text-main);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 999px;
+    background: var(--color-danger);
+    color: white;
+    font-size: 0.75rem;
+    padding: 0 0.3rem;
+}
+
+.tableWrapper {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1rem;
+    background-color: var(--color-bg-surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+
+    & th,
+    & td {
+        padding: 1rem;
+        border-bottom: 1px solid var(--color-bg-subtle);
+        text-align: left;
+    }
+
+    & th {
+        background-color: var(--color-secondary);
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+    }
+
+    & tr:last-child td {
+        border-bottom: none;
+    }
+
+    & tr:hover {
+        background-color: #f9fafb;
+    }
+}
+
+.btnApprove {
+    background-color: #10b981;
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+    margin-right: 0.5rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform var(--transition-fast);
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
+.btnRefuse {
+    background-color: #ef4444;
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform var(--transition-fast);
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+.overtime {
+    font-weight: 700;
+    color: #b45309;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0.8rem;
+    }
+
+    .tabButton {
+        flex: 1 1 100%;
+        justify-content: center;
+    }
+
+    .table {
+        min-width: 760px;
+    }
+}

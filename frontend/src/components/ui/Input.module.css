@@ -1,0 +1,41 @@
+/* input label, les champs et gestion d'erreurs */
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #333;
+}
+
+.required {
+    color: #ef4444;
+}
+
+.input {
+    padding: 0.7rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+    outline: none;
+
+    &:focus {
+        border-color: #f4a261;
+        box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.1);
+    }
+}
+/* gestion des messages d'erreurs */
+.hasError {
+    border-color: #ef4444;
+}
+.errorMessage {
+    font-size: 0.8rem;
+    color: #ef4444;
+    margin-top: 0.3rem;
+}

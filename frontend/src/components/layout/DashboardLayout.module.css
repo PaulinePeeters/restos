@@ -1,0 +1,37 @@
+.dashboardContainer {
+    display: flex;
+    height: 100vh;
+    font-family: var(--font-family-base);
+    background-color: var(--color-bg-main);
+    overflow: hidden;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        overflow: auto;
+        padding-bottom: 78px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+}
+
+.content {
+    flex-grow: 1;
+    padding: 2.5rem;
+    background-color: var(--color-bg-main);
+    overflow-y: auto;
+    min-width: 0;
+    overflow-x: hidden;
+
+    & > * {
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    @media (max-width: 768px) {
+        padding: 1rem;
+        padding-bottom: 1.25rem;
+    }
+}

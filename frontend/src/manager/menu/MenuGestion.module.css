@@ -1,0 +1,499 @@
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.content {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menuHierarchy {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.categorySection {
+    width: 100%;
+}
+
+.categoryTitle {
+    font-size: 1.8rem;
+    color: var(--color-secondary-dark);
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+}
+
+.subCategories {
+    margin-left: 2rem;
+    margin-top: 2rem;
+    border-left: 2px solid var(--color-bg-subtle);
+    padding-left: 1rem;
+
+    & .categoryTitle {
+        font-size: 1.4rem;
+        color: var(--color-text-main);
+        border-bottom: 1px dashed var(--color-bg-subtle);
+    }
+}
+
+/* Grille des plats */
+.gridPlats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.cardPlat {
+    background-color: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+}
+
+.platImage {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--color-bg-subtle);
+}
+
+.platInfo {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    & h4 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.25rem;
+        color: var(--color-text-main);
+    }
+}
+
+.prix {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.desc {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    line-height: 1.5;
+}
+
+.ingredientsListSmall {
+    margin-bottom: 1rem;
+    color: var(--color-text-secondary);
+    font-style: italic;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.badgeAllergene {
+    background-color: #fee2e2;
+    color: #ef4444;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.btnDelete {
+    width: 100%;
+}
+
+/* Formulaire Ajout */
+.formAjout {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--color-bg-surface);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+
+    & h3 {
+        margin-top: 0;
+        margin-bottom: 2rem;
+        text-align: center;
+        color: var(--color-secondary-dark);
+    }
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.selectGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    & label {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        color: var(--color-text-main);
+        font-size: 0.9rem;
+    }
+}
+
+.select {
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    background-color: white;
+    transition: all var(--transition-fast);
+
+    &:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.2);
+    }
+}
+
+.label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: var(--color-text-main);
+    font-size: 0.9rem;
+}
+
+.textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 100px;
+    margin-bottom: 1.5rem;
+    font-family: inherit;
+
+    &:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.2);
+    }
+}
+
+.checkboxRow {
+    margin-bottom: 2rem;
+
+    & label {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    & input[type="checkbox"] {
+        width: 1.2rem;
+        height: 1.2rem;
+        accent-color: var(--color-primary);
+    }
+}
+
+.section {
+    margin-bottom: 2rem;
+    background-color: var(--color-bg-main);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+
+    & h4 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+}
+
+.tagsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.tag {
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+    user-select: none;
+
+    &:hover {
+        border-color: var(--color-primary-light);
+        background-color: #fff7ed;
+    }
+
+    &.selected {
+        background-color: var(--color-primary);
+        color: white;
+        border-color: var(--color-primary);
+        box-shadow: var(--shadow-sm);
+    }
+}
+
+.submitBtn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Gestionnaire d'ingrédients */
+.ingredientsManager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.listIngredients {
+    background-color: var(--color-bg-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    max-height: 600px;
+    overflow-y: auto;
+
+    & h3 {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--color-bg-subtle);
+    }
+
+    & ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    & li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px dashed var(--color-bg-subtle);
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+.lowStock {
+    color: var(--color-danger);
+    font-weight: 600;
+
+    & span::after {
+        content: "⚠️";
+        margin-left: 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+.formIngredient {
+    background-color: var(--color-bg-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    height: fit-content;
+
+    & h3 {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.ingredientsList {
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-bg-subtle);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-main);
+}
+
+.ingredientRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px dashed var(--color-bg-subtle);
+
+    &:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    & label {
+        flex: 1;
+        margin-right: 0.5rem;
+        margin-bottom: 0;
+        font-weight: 500;
+    }
+
+    & input {
+        width: 100px;
+        text-align: right;
+        margin-bottom: 0;
+        padding: 0.5rem;
+    }
+}
+
+.cardActions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.flex1 {
+    flex: 1;
+}
+
+.selectWrapper {
+    display: flex;
+    gap: 5px;
+}
+
+.boldOption {
+    font-weight: bold;
+}
+
+.marginBottom {
+    margin-bottom: 1rem;
+}
+
+.translationRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.noMarginBottom {
+    margin-bottom: 0;
+}
+
+.btnTranslate {
+    font-size: 0.8rem;
+    padding: 2px 8px;
+}
+
+.checkboxGroup {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.buttonsRow {
+    display: flex;
+    gap: 10px;
+}
+
+.ingredientHeader {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style des KPI */
+.kpiContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-bg-main);
+    padding: 0.5rem 0.8rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    border: 1px dashed var(--color-bg-subtle);
+}
+
+.kpiItem {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.kpiLabel {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.textGreen {
+    color: var(--color-success);
+    font-weight: bold;
+}
+
+.textRed {
+    color: var(--color-danger);
+    font-weight: bold;
+}
+
+.suggestedPrice {
+    color: var(--color-primary);
+    font-weight: bold;
+    cursor: help;
+}

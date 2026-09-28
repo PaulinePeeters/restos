@@ -1,0 +1,152 @@
+
+/* Panneau Notification */
+.notifPanel {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    position: fixed;
+    top: 80px;
+    left: 280px;
+    z-index: 1000;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+    @media (max-width: 768px) {
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90vw;
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+}
+
+/* Styles  accès rapides*/
+.quickAccess {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.quickAccessTitle {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.quickAccessList {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.quickAccessLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.75rem 0.25rem;
+    text-decoration: none;
+    color: var(--color-text-inverse);
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    & span {
+        font-size: 1.2rem;
+        margin-bottom: 0.25rem;
+    }
+
+    & small {
+        font-size: 0.7rem;
+        font-weight: 500;
+        opacity: 0.9;
+    }
+}
+
+/* Système de notification */
+
+.headerBellContainer {
+    position: relative;
+    cursor: pointer;
+}
+
+.bellIcon {
+    font-size: 1.2rem;
+}
+
+.notificationBadge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+}
+
+.notificationList {
+    list-style: none;
+    padding: 0;
+}
+
+.notificationItem {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.notificationMessage {
+    margin: 0 0 5px 0;
+    font-size: 0.9rem;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 5px;
+}
+
+.btnActionDisable {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.btnActionModify {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.btnMarkRead {
+    margin-top: 5px;
+    background: transparent;
+    border: none;
+    color: #666;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-decoration: underline;
+}

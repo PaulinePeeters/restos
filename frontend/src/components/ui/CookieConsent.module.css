@@ -1,0 +1,72 @@
+/* bannière de consentement pour les cookies */
+.banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-top: 1px solid #e5e7eb;
+    padding: 1.5rem;
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    animation: slideUp 0.3s ease-out;
+}
+
+.content {
+    flex: 1;
+    max-width: 800px;
+}
+
+.content p {
+    margin: 0;
+    color: #374151;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.btnRefuse {
+    border-color: #d1d5db;
+    color: #6b7280;
+}
+
+.btnRefuse:hover {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 640px) {
+    .banner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+}

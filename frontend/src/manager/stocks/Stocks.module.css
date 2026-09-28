@@ -1,0 +1,388 @@
+
+.btnPrimary {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.btnPrimary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.tableContainer {
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    margin-bottom: 3rem;
+    border: 1px solid var(--color-bg-subtle);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table th {
+    background-color: var(--color-secondary);
+    padding: 1rem 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+    border-bottom: 1px solid var(--color-bg-subtle);
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-bg-subtle);
+    vertical-align: middle;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover {
+    background-color: var(--color-bg-main);
+}
+
+.rowAlert {
+    background-color: #fef2f2;
+}
+
+.rowAlert:hover {
+    background-color: #fee2e2;
+}
+
+.cellName {
+    font-weight: 500;
+    color: var(--color-text-main);
+}
+
+.cellNameWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.cellQuantity {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+}
+
+.cellThreshold {
+    color: var(--color-text-secondary);
+}
+
+.cellCost {
+    width: 240px;
+}
+
+.cellActions {
+    width: 250px;
+}
+
+/* Badges */
+.badgeAlert {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.textDanger {
+    color: var(--color-danger);
+    font-weight: 700;
+}
+
+.textSuccess {
+    color: var(--color-success);
+    font-weight: 700;
+}
+
+.costInputGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+.actionGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.inputSmall,
+.inputAction {
+    padding: 0.375rem 0.5rem;
+    border: 1px solid var(--color-bg-subtle);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    transition: border-color var(--transition-fast);
+}
+
+.inputSmall {
+    width: 70px;
+}
+
+.inputAction {
+    width: 80px;
+}
+
+.inputSmall:focus,
+.inputAction:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.2);
+}
+
+.btnIcon {
+    background: none;
+    border: 1px solid var(--color-bg-subtle);
+    border-radius: var(--radius-md);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-success);
+    transition: all var(--transition-fast);
+}
+
+.btnIcon:hover {
+    background-color: #ecfdf5;
+    border-color: var(--color-success);
+}
+
+.btnAction {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-bg-subtle);
+    color: var(--color-text-main);
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btnAction:hover {
+    background-color: var(--color-bg-main);
+    border-color: var(--color-text-muted);
+}
+
+.btnDelete {
+    background-color: var(--color-bg-surface);
+    border: 1px solid #fee2e2;
+    color: var(--color-danger);
+    padding: 0.375rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnDelete:hover {
+    background-color: #fef2f2;
+    border-color: var(--color-danger);
+}
+
+.historySection {
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: 1px solid var(--color-bg-subtle);
+    box-shadow: var(--shadow-md);
+}
+
+.historySection h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    color: var(--color-text-main);
+}
+
+.historyList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.historyItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg-main);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-bg-subtle);
+    font-size: 0.9rem;
+}
+
+.historyDate {
+    color: var(--color-text-muted);
+}
+
+.emptyHistory {
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+.modalContent {
+    background: var(--color-bg-surface);
+    padding: 0;
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 600px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+}
+
+.modalHeader {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-bg-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modalHeader h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--color-text-main);
+}
+
+.btnClose {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 0.25rem;
+    line-height: 1;
+}
+
+.btnClose:hover {
+    color: var(--color-text-main);
+}
+
+.shoppingList {
+    padding: 1.5rem;
+    overflow-y: auto;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.shoppingItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--color-bg-main);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-bg-subtle);
+}
+
+.shoppingItemInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.shoppingItemInfo strong {
+    color: var(--color-text-main);
+}
+
+.shoppingItemInfo span {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+}
+
+.shoppingItemAction {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.shoppingItemAction span {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.shoppingItemAction small {
+    color: var(--color-text-muted);
+}
+
+.modalFooter {
+    padding: 1.5rem;
+    border-top: 1px solid var(--color-bg-subtle);
+    background-color: var(--color-bg-main);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.totalCost {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-text-main);
+}
+
+.btnPrint {
+    background-color: var(--color-secondary-dark);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btnPrint:hover {
+    background-color: var(--color-secondary);
+}
